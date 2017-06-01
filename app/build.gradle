@@ -31,4 +31,7 @@ dependencies {
     testCompile "org.robolectric:robolectric:3.3.2"
     compile 'junit:junit:4.12'
     compile 'org.robolectric:robolectric:3.3.2'
+
+    compile 'com.jakewharton:butterknife:8.6.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
 }

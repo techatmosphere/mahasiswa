@@ -1,10 +1,5 @@
 package com.mahasiswa.model;
 
-/**
- * @author nirwannursabda
- * @date 6/1/17
- */
-
 public class Mahasiswa {
     String idMahasiswa;
     String namaMahasiswa;
