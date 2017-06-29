@@ -3,6 +3,7 @@ package com.mahasiswa.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mahasiswa.R;
 
@@ -45,6 +46,7 @@ public class MainButterActivity extends AppCompatActivity {
 
     @OnClick(R.id.save)
     public void onClickSave(){
-
+        Toast.makeText(this, "Save Main Activity", Toast.LENGTH_SHORT).show();
     }
+
 }
