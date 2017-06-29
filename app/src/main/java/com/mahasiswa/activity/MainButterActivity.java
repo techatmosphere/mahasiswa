@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.mahasiswa.R;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainButterActivity extends AppCompatActivity {
@@ -26,6 +27,8 @@ public class MainButterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ButterKnife.bind(this);
 
         nama.setText("Budiman");
         tempatLahir.setText("Bandung");

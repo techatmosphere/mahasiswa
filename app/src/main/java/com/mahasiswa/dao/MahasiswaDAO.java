@@ -7,14 +7,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.compat.BuildConfig;
 import com.mahasiswa.model.Mahasiswa;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
-import org.robolectric.annotation.Config;
+//import org.junit.runner.RunWith;
+//import org.robolectric.RobolectricTestRunner;
+//import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
 
-@RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class)
+//@RunWith(RobolectricTestRunner.class)
+//@Config(constants = BuildConfig.class)
 public class MahasiswaDAO extends SQLiteOpenHelper{
 
     public MahasiswaDAO(Context context) {
