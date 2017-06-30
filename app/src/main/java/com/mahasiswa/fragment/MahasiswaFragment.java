@@ -30,13 +30,6 @@ public class MahasiswaFragment extends Fragment{
         nama = (TextView) rootView.findViewById(R.id.nama);
         tempatLahir = (TextView) rootView.findViewById(R.id.tempat_lahir);
         tanggalLahir = (TextView) rootView.findViewById(R.id.tanggal_lahir);
-        jenisKelamin = (TextView) rootView.findViewById(R.id.jenis_kelamin);
-        golonganDarah = (TextView) rootView.findViewById(R.id.golongan_darah);
-        alamat = (TextView) rootView.findViewById(R.id.alamat);
-        agama = (TextView) rootView.findViewById(R.id.agama);
-        status = (TextView) rootView.findViewById(R.id.status);
-        pekerjaan = (TextView) rootView.findViewById(R.id.pekerjaan);
-        kewarganegaraan = (TextView) rootView.findViewById(R.id.kewarganegaraan);
 
         nama.setText("Budiman");
         tempatLahir.setText("Bandung");

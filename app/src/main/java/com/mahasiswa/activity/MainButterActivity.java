@@ -1,52 +1,83 @@
 package com.mahasiswa.activity;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.view.View;
 import com.mahasiswa.R;
+import com.mahasiswa.dao.MahasiswaDAO;
+import com.mahasiswa.fragment.MahasiswaButterFragment;
+import com.mahasiswa.model.Mahasiswa;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class MainButterActivity extends AppCompatActivity {
+public class MainButterActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener
+{
+    Fragment fragment = null;
 
-    @BindView(R.id.nama) TextView nama;
-    @BindView(R.id.tempat_lahir) TextView tempatLahir;
-    @BindView(R.id.tanggal_lahir) TextView tanggalLahir;
-    @BindView(R.id.jenis_kelamin) TextView jenisKelamin;
-    @BindView(R.id.golongan_darah) TextView golonganDarah;
-    @BindView(R.id.alamat) TextView alamat;
-    @BindView(R.id.agama) TextView agama;
-    @BindView(R.id.status) TextView status;
-    @BindView(R.id.pekerjaan) TextView pekerjaan;
-    @BindView(R.id.kewarganegaraan) TextView kewarganegaraan;
+    @BindView(R.id.toolbar)
+    protected Toolbar toolbar;
+
+    @BindView(R.id.drawer_layout)
+    protected DrawerLayout drawerLayout;
+
+    @BindView(R.id.nav_view)
+    protected NavigationView navigationView;
+
+    MahasiswaDAO dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.navigation);
 
         ButterKnife.bind(this);
 
-        nama.setText("Budiman");
-        tempatLahir.setText("Bandung");
-        tanggalLahir.setText("07-02-1990");
-        jenisKelamin.setText("Laki-laki");
-        golonganDarah.setText("O");
-        alamat.setText("Jl. Kahuripan no 11");
-        agama.setText("Islam");
-        status.setText("Belum Menikah");
-        pekerjaan.setText("Mahasiswa");
-        kewarganegaraan.setText("WNI");
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout,
+                toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        dao = new MahasiswaDAO(this);
+        dao.getReadableDatabase();
 
     }
 
-    @OnClick(R.id.save)
-    public void onClickSave(){
-        Toast.makeText(this, "Save Main Activity", Toast.LENGTH_SHORT).show();
-    }
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
 
+        if (id == R.id.nav_mahasiswa) {
+            fragment = new MahasiswaButterFragment();
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.body_of_home, fragment).commit();
+        }
+
+        setTitle("Mahasiswa");
+
+        return true;
+    }
 }

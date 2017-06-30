@@ -58,16 +58,9 @@ public class MahasiswaButterAdapter extends BaseAdapter {
         // getting movie data for the row
         final Mahasiswa mhs = listMahasiswa.get(i);
 
-        viewHolder.nama.setText("Budiman");
-        viewHolder.tempatLahir.setText("Bandung");
-        viewHolder.tanggalLahir.setText("07-02-1990");
-        viewHolder.jenisKelamin.setText("Laki-laki");
-        viewHolder.golonganDarah.setText("O");
-        viewHolder.alamat.setText("Jl. Kahuripan no 11");
-        viewHolder.agama.setText("Islam");
-        viewHolder.status.setText("Belum Menikah");
-        viewHolder.pekerjaan.setText("Mahasiswa");
-        viewHolder.kewarganegaraan.setText("WNI");
+        viewHolder.nama.setText(mhs.getNamaMahasiswa());
+        viewHolder.tempatLahir.setText(mhs.getTempatLahir());
+        viewHolder.tanggalLahir.setText(mhs.getTanggalLahir());
 
         return view;
     }
@@ -76,13 +69,6 @@ public class MahasiswaButterAdapter extends BaseAdapter {
         @BindView(R.id.nama) TextView nama;
         @BindView(R.id.tempat_lahir) TextView tempatLahir;
         @BindView(R.id.tanggal_lahir) TextView tanggalLahir;
-        @BindView(R.id.jenis_kelamin) TextView jenisKelamin;
-        @BindView(R.id.golongan_darah) TextView golonganDarah;
-        @BindView(R.id.alamat) TextView alamat;
-        @BindView(R.id.agama) TextView agama;
-        @BindView(R.id.status) TextView status;
-        @BindView(R.id.pekerjaan) TextView pekerjaan;
-        @BindView(R.id.kewarganegaraan) TextView kewarganegaraan;
 
         public ViewHolder(View view) {
             ButterKnife.bind(this, view);

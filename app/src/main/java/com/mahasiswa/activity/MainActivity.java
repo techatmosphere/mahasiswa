@@ -28,19 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        nama = (TextView) findViewById(R.id.nama);
-        tempatLahir = (TextView) findViewById(R.id.tempat_lahir);
-        tanggalLahir = (TextView) findViewById(R.id.tanggal_lahir);
-        jenisKelamin = (TextView) findViewById(R.id.jenis_kelamin);
-        golonganDarah = (TextView) findViewById(R.id.golongan_darah);
-        alamat = (TextView) findViewById(R.id.alamat);
-        agama = (TextView) findViewById(R.id.agama);
-        status = (TextView) findViewById(R.id.status);
-        pekerjaan = (TextView) findViewById(R.id.pekerjaan);
-        kewarganegaraan = (TextView) findViewById(R.id.kewarganegaraan);
-
-        save = (Button) findViewById(R.id.save);
-
         nama.setText("Budiman");
         tempatLahir.setText("Bandung");
         tanggalLahir.setText("07-02-1990");

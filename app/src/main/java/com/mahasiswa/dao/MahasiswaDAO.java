@@ -5,16 +5,10 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.compat.BuildConfig;
 import com.mahasiswa.model.Mahasiswa;
-//import org.junit.runner.RunWith;
-//import org.robolectric.RobolectricTestRunner;
-//import org.robolectric.annotation.Config;
 
 import java.util.ArrayList;
 
-//@RunWith(RobolectricTestRunner.class)
-//@Config(constants = BuildConfig.class)
 public class MahasiswaDAO extends SQLiteOpenHelper{
 
     public MahasiswaDAO(Context context) {
@@ -31,6 +25,8 @@ public class MahasiswaDAO extends SQLiteOpenHelper{
             ContentValues contentValues = new ContentValues();
             contentValues.put("id_mahasiswa", mahasiswa.getIdMahasiswa());
             contentValues.put("nama_mahasiswa", mahasiswa.getNamaMahasiswa());
+            contentValues.put("tempat", mahasiswa.getTempatLahir());
+            contentValues.put("tanggal_lahir", mahasiswa.getTanggalLahir());
 
             result = db.insert("mahasiswa", null, contentValues);
 
@@ -78,15 +74,19 @@ public class MahasiswaDAO extends SQLiteOpenHelper{
         try{
 
             Cursor res = getReadableDatabase()
-                    .rawQuery("select id_mahasiswa, nama_mahasiswa from mahasiswa", null);
+                    .rawQuery("select id_mahasiswa, nama_mahasiswa, tempat, tanggal_lahir from mahasiswa", null);
 
             while (res.moveToNext()) {
                 Mahasiswa mahasiswa = new Mahasiswa();
                 String id = res.getString(res.getColumnIndex("id_mahasiswa"));
                 String name = res.getString(res.getColumnIndex("nama_mahasiswa"));
+                String tempat = res.getString(res.getColumnIndex("tempat"));
+                String tanggalLahir = res.getString(res.getColumnIndex("tanggal_lahir"));
 
                 mahasiswa.setIdMahasiswa(id);
                 mahasiswa.setNamaMahasiswa(name);
+                mahasiswa.setTempatLahir(tempat);
+                mahasiswa.setTanggalLahir(tanggalLahir);
                 listMahasiswa.add(mahasiswa);
             }
 
@@ -104,7 +104,9 @@ public class MahasiswaDAO extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table IF NOT EXISTS mahasiswa(\n" +
                 "    id_mahasiswa TEXT primary key,\n" +
-                "    nama_mahasiswa TEXT\n" +
+                "    nama_mahasiswa TEXT,\n" +
+                "    tempat TEXT,\n" +
+                "    tanggal_lahir TEXT\n" +
                 ")");
     }
 

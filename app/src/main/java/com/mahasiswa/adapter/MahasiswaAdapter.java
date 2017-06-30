@@ -53,13 +53,6 @@ public class MahasiswaAdapter extends BaseAdapter {
             viewHolder.tempatLahir = (TextView) view
                     .findViewById(R.id.tempat_lahir);
             viewHolder.tanggalLahir = (TextView) view.findViewById(R.id.tanggal_lahir);
-            viewHolder.jenisKelamin = (TextView) view.findViewById(R.id.jenis_kelamin);
-            viewHolder.golonganDarah = (TextView) view.findViewById(R.id.golongan_darah);
-            viewHolder.alamat = (TextView) view.findViewById(R.id.alamat);
-            viewHolder.agama = (TextView) view.findViewById(R.id.agama);
-            viewHolder.status = (TextView) view.findViewById(R.id.status);
-            viewHolder.pekerjaan = (TextView) view.findViewById(R.id.pekerjaan);
-            viewHolder.kewarganegaraan = (TextView) view.findViewById(R.id.kewarganegaraan);
 
             view.setTag(viewHolder);
         } else {
