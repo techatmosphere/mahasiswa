@@ -93,6 +93,7 @@ public class MahasiswaDAO extends SQLiteOpenHelper{
             res.close();
         }catch(Exception e){
             e.printStackTrace();
+            throw e;
         }finally {
             this.close();
         }
